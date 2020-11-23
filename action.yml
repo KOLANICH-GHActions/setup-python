@@ -1,0 +1,20 @@
+name: setup-python
+description: |
+  Smoothieless setup of working environment for python.
+author: KOLANICH
+
+inputs:
+  install_pytest:
+    description: 'Whether to install pytest.'
+    required: false
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+      - run: bash ${{github.action_path}}/action.sh ${{inputs.install_pytest}}
+        shell: bash  # fuck, this doesn't guarantee that the script is called with bash. Has to call bash explicitly
+
+branding:
+  icon: tick
+  color: green
